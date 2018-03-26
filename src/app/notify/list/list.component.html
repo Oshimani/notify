@@ -1,0 +1,6 @@
+<div class="notify-list">
+    <div *ngIf="notificationList.length > 0" class="notify-header">
+        {{notificationList.length}} Notifications
+    </div>
+    <notify-popup *ngFor="let notification of notificationList" [notification]="notification" (pop)="handlePop($event)"></notify-popup>
+</div>

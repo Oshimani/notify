@@ -1,0 +1,6 @@
+<div class="notify-frame" *ngIf="notification">
+    <div class="alert" [ngClass]="{'alert-info': notification.level === 0, 'alert-warning': notification.level === 1, 'alert-danger': notification.level === 2, 'alert-success': notification.level === 3}">
+        <button *ngIf="notification.dismissable" type="button" class="close" aria-hidden="true" (click)="dismiss()">&times;</button>
+        <strong>{{notification.heading}}</strong> {{notification.message}}
+    </div>
+</div>
