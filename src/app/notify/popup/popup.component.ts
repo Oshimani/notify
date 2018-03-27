@@ -14,12 +14,7 @@ export class PopUpComponent implements OnInit {
     @Output() pop: EventEmitter<INotification> = new EventEmitter<INotification>();
 
     constructor() {
-        // NotifyService.notificationSource.subscribe(
-        //     notification => {
-        //         console.log(notification);
-        //         this.notification = notification;
-        //     }
-        // );
+
     }
 
     ngOnInit() { }

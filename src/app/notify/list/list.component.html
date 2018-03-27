@@ -1,6 +1,16 @@
 <div class="notify-list">
-    <div *ngIf="notificationList.length > 0" class="notify-header">
-        {{notificationList.length}} Notifications
+    <div [@slideInOut] *ngIf="notificationList.length > 0" class="notify-header">
+        <span>
+            {{notificationList.length}}
+        </span>
+        <span *ngIf="notificationList.length === 1">
+            Notification
+        </span>
+        <span *ngIf="notificationList.length > 1">
+            Notifications
+        </span>
     </div>
-    <notify-popup *ngFor="let notification of notificationList" [notification]="notification" (pop)="handlePop($event)"></notify-popup>
+    <div [@slideInOut] *ngFor="let notification of notificationList">
+        <notify-popup [notification]="notification" (pop)="handlePop($event)"></notify-popup>
+    </div>
 </div>
