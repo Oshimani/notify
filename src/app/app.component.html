@@ -1,27 +1,76 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1>Notify-Testapp</h1>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-<button (click)="trigger(0)">Info</button>
-<button (click)="trigger(1)">Warning</button>
-<button (click)="trigger(2)">Error</button>
-<button (click)="trigger(3)">Success</button>
+<!-- Notification Buttons -->
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="card text-left">
+      <div class="card-body">
+        <h4 class="card-title">Push Notifications</h4>
+        <p class="card-text">Try the buttons to push notifications</p>
+        <button type="button"
+                class="btn btn-info"
+                (click)="trigger(0)">Info</button>
+        <button type="button"
+                class="btn btn-warning"
+                (click)="trigger(1)">Warning</button>
+        <button type="button"
+                class="btn btn-danger"
+                (click)="trigger(2)">Error</button>
+        <button type="button"
+                class="btn btn-success"
+                (click)="trigger(3)">Success</button>
+        <!-- Timeout -->
+        <div class="form-group">
+          <label for="timeout">Timeout on new notifications</label>
+          <input type="number"
+                 class="form-control form-control-sm"
+                 name="timeout"
+                 id="timeout"
+                 aria-describedby="timeout-help-ip"
+                 [(ngModel)]="timeout">
+          <small id="timeout-help-ip"
+                 class="form-text text-muted">Put timeout in milliseconds. (0 for no timeout)</small>
+        </div>
+        <!-- Allow Dismiss -->
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input"
+                   type="checkbox"
+                   name="display-heading"
+                   id="display-heading"
+                   [(ngModel)]="allowDismiss"> Allow user to dismiss new notifications early
+          </label>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Settings -->
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+    <div class="card text-left">
+      <div class="card-body">
+        <h4 class="card-title">Settings</h4>
+        <p class="card-text">Try different settings.</p>
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input"
+                   type="checkbox"
+                   name="display-heading"
+                   id="display-heading"
+                   [(ngModel)]="displayHeading"> Display Heading
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Notify -->
-<!-- <notify-popup></notify-popup> -->
-<notify-list></notify-list>
+<notify-list [displayHeading]="displayHeading"></notify-list>

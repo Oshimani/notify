@@ -1,5 +1,5 @@
 <div class="notify-list">
-    <div [@slideInOut] *ngIf="notificationList.length > 0" class="notify-header">
+    <div [@slideInOut] *ngIf="notificationList.length > 0 && displayHeading" class="notify-header">
         <span>
             {{notificationList.length}}
         </span>

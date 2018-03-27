@@ -9,7 +9,9 @@ import { NotificationLevel } from './notify/notification.level';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+  public displayHeading: boolean = true;
+  public timeout: number = 5000;
+  public allowDismiss: boolean = true;
 
   constructor() {
   }
@@ -18,12 +20,32 @@ export class AppComponent implements OnInit {
   }
 
   public trigger(level: NotificationLevel) {
+    let message;
+    let heading;
+    switch (level) {
+      case NotificationLevel.info:
+        heading = 'Info';
+        message = 'This is an Info, no action necessary';
+        break;
+      case NotificationLevel.warning:
+        heading = 'Warning';
+        message = 'Oh, watch out!';
+        break;
+      case NotificationLevel.error:
+        heading = 'Error';
+        message = 'AHH OMG ERROR Jesus christ!';
+        break;
+      default:
+        heading = 'Success';
+        message = 'Item created!';
+        break;
+    }
     NotifyService.newNotification(new Notification({
       level: level,
-      message: 'An Error occured',
-      heading: 'ERROR',
-      timeout: 5000,
-      dismissable: true
+      message: message,
+      heading: heading,
+      timeout: this.timeout,
+      dismissable: this.allowDismiss
     }));
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 
 import { NotifyService } from '../notify.service';
@@ -22,12 +22,14 @@ import { } from '@angular/core/src/render3';
     ]
 })
 export class ListComponent implements OnInit {
+    @Input() displayHeading: boolean = false;
+
     public notificationList: Array<INotification> = new Array<INotification>();
 
     constructor() {
         NotifyService.notification.subscribe(
             notification => {
-                this.notificationList.push(notification);
+                this.notificationList.unshift(notification);
             }
         );
     }

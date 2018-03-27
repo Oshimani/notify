@@ -17,7 +17,13 @@ export class PopUpComponent implements OnInit {
 
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        if (this.notification.timeout !== undefined && this.notification.timeout > 0) {
+            setTimeout(() => {
+                this.dismiss();
+            }, this.notification.timeout);
+        }
+    }
 
     public dismiss() {
         this.pop.emit(this.notification);
